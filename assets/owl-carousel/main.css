@@ -1,0 +1,50 @@
+    .card-body {
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .card-text {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 22px;
+        font-weight: normal;
+        font-style: normal;
+        color: #6f6f6f;
+    }
+
+    .card-title {
+        font-family: Arial, sans-serif;
+        font-size: 22px;
+        line-height: 32px;
+        font-weight: 500;
+        font-style: normal;
+        color: #486acd;
+        align-self: center;
+    }
+
+    .card-read-more {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 22px;
+        font-weight: 550;
+        font-style: normal;
+        color: #ff4d58;
+        text-decoration: none;
+        align-self: center;
+    }
+
+    .card-read-more:hover {
+        text-decoration: none;
+        color: #ff4d58;
+    }
+
+    .card-title:hover {
+        text-decoration: none;
+        color: #486acd;
+    }
+
+    .item {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
