@@ -68,3 +68,21 @@
 .flip:active {
   background-color: #fafafa;
 }
+
+.owl-carousel2 .owl-nav {
+  position: absolute;
+  top: -64px;
+  right: 0;
+  background-color: #ffffff;
+}
+
+.owl-carousel2 .owl-nav button {
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  border-radius: 50%;
+}
+
+.owl-carousel2 .owl-nav button:hover {
+  background-color: red;
+}

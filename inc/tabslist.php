@@ -39,7 +39,7 @@ class TabsList extends WP_Widget
         <button class="flip mr-3 ml-3" data-panel="panel5">Business</button>
     </div>
     <div class="panel" id="panel1">
-            <div class="owl-carousel owl-theme">
+            <div class="owl-carousel owl-carousel3 owl-theme">
                 <div class="item">
                     <div class="card" style="width: 100%;">
                         <img src="https://dream-city.cmsmasters.net/wp-content/uploads/2016/11/Depositphotos_102982556_original-s.jpg"
@@ -103,7 +103,7 @@ class TabsList extends WP_Widget
             </div>
     </div>
     <div class="panel" id="panel2">
-            <div class="owl-carousel owl-theme">
+            <div class="owl-carousel owl-carousel3 owl-theme">
                 <div class="item">
                     <div class="card" style="width: 100%;">
                         <img src="https://dream-city.cmsmasters.net/wp-content/uploads/2016/11/Depositphotos_102982556_original-s.jpg"
@@ -167,7 +167,7 @@ class TabsList extends WP_Widget
             </div>
     </div>
     <div class="panel" id="panel3">
-        <div class="owl-carousel owl-theme">
+        <div class="owl-carousel owl-carousel3 owl-theme">
             <div class="item">
                 <div class="card" style="width: 100%;">
                     <img src="https://dream-city.cmsmasters.net/wp-content/uploads/2016/11/Depositphotos_102982556_original-s.jpg"
@@ -231,7 +231,7 @@ class TabsList extends WP_Widget
         </div>
     </div>
     <div class="panel" id="panel4">
-        <div class="owl-carousel owl-theme">
+        <div class="owl-carousel owl-carousel3 owl-theme">
             <div class="item">
                 <div class="card" style="width: 100%;">
                     <img src="https://dream-city.cmsmasters.net/wp-content/uploads/2016/11/Depositphotos_102982556_original-s.jpg"
@@ -295,7 +295,7 @@ class TabsList extends WP_Widget
         </div>
     </div>
     <div class="panel" id="panel5">
-        <div class="owl-carousel owl-theme">
+        <div class="owl-carousel owl-carousel3 owl-theme">
             <div class="item">
                 <div class="card" style="width: 100%;">
                     <img src="https://dream-city.cmsmasters.net/wp-content/uploads/2016/11/Depositphotos_102982556_original-s.jpg"

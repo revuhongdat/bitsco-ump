@@ -428,6 +428,10 @@ require get_template_directory() . '/inc/home-widget-filter.php';
  * Load tabslist.
  */
 require get_template_directory() . '/inc/tabslist.php';
+/**
+ * Load tabslist2.
+ */
+require get_template_directory() . '/inc/tabslist2.php';
 
 function add_tablist() {
     wp_enqueue_style( 'owl-carousel-css', get_template_directory_uri() . '/assets/owl-carousel/owl.carousel.min.css' );
