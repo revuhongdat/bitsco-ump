@@ -3,8 +3,8 @@ jQuery(document).ready(function(){
     var currentPanel = null;
 
     // SlideDown panel1 khi trang được tải xong
-    jQuery("#panel1").slideDown("slow");
-    currentPanel = "#panel1";
+    jQuery("#panel16").slideDown("slow");
+    currentPanel = "#panel16";
 
     jQuery(".flip").click(function(){
         var panelId = "#" + jQuery(this).data("panel");
