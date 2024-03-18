@@ -7,7 +7,7 @@
     <div id="content" class="site-content">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-8">
+                <div class="col-xs-12 col-sm-12 col-md-12"> 
                     <div class="news-detail" id="content-to-print">
                         <div class="title_post">
                             <h1><?php the_title(); ?></h1>
@@ -81,7 +81,7 @@
                                 echo '
                                     <div class="related-posts mb-2">
                                        <div class="related-posts-title">
-                                          <span>Tin liên quan</span>
+                                          <span class="h4">Tin liên quan</span>
                                        </div>
                                       <ul class="list-unstyled">';
                                 while ($my_query->have_posts()) {
@@ -100,13 +100,14 @@
                         ?>
                     </div><!--.news-detail-->
                 </div><!-- .site-content-left -->
-                <div class="col-xs-12 col-sm-12 col-md-4">
+                
+                <!-- <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="sticky-top" style="top: 80px;">
                     <?php if (function_exists('dynamic_sidebar') && dynamic_sidebar('sidebar-1')) :
                     else : ?>
                     <?php endif; ?>
                     </div>
-                </div><!-- .site-content-right -->
+                </div>.site-content-right -->
             </div>
         </div>
     </div><!-- .site-content -->

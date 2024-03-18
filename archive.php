@@ -7,7 +7,7 @@
     <div id="content" class="site-content">
         <div class="container">
             <div class="row mb-2">
-                <div class="col-xs-12 col-sm-12 col-md-8">
+                <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="title-underline mb-2">
                         <h1><?php echo single_cat_title('', false); ?></h1>
                     </div>
@@ -37,13 +37,14 @@
                         <?php iboss_pagination(); ?>
                     </div>
                 </div><!-- .site-content-left -->
-                <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="sticky-top" style="top: 80px;">
                         <?php if (function_exists('dynamic_sidebar') && dynamic_sidebar('sidebar-1')) :
                         else : ?>
                         <?php endif; ?>
                     </div>
-                </div><!-- .site-content-right -->
+                </div>
+                <!-- .site-content-right -->
             </div>
         </div>
     </div><!-- .site-content -->

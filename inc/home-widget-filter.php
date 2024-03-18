@@ -26,11 +26,10 @@ class HomeWidgetFilter extends WP_Widget
 
         echo '<div class="filter-block mt-5">';
         echo '<div>';
-        echo '<h4 class="text-center">Programs and Initiatives</h4>';
-        echo '<p class="text-center">Welcome to the City of Dream</p>';
+        echo '<h4 class="text-center">CÁC HOẠT ĐỘNG CHÍNH</h4>';
         echo '</div>';
         echo '<div id="filters" class="button-group d-flex justify-content-center align-items-center">';
-        echo '<button class="button is-checked" data-filter="*">All Categories</button>';
+        echo '<button class="button is-checked" data-filter="*">TẤT CẢ</button>';
         foreach ($selected_categories as $category_id) {
             $category = get_category($category_id);
             if ($category) {
@@ -39,43 +38,110 @@ class HomeWidgetFilter extends WP_Widget
                 echo '<button class="button" data-filter=".' .$category_slug. '">' .$category_name. '</button>';
             }
         }
-        echo '</div>';
-        echo '<div class="grid row">';
+
+        $array_post = array(); // Khởi tạo mảng để lưu trữ bài viết
+
         foreach ($selected_categories as $category_id) {
             $category = get_category($category_id);
             if ($category) {
-                $category_slug = $category->slug;
-                $category_name = $category->name;
-                // Tạo một truy vấn WordPress để lấy bài viết từ chuyên mục hiện tại
-                $wp_query = new WP_Query(array(
-                    'cat' => $category_id,
-                    'posts_per_page' => $count,
-                ));
-                // Lặp qua các bài viết trong truy vấn và hiển thị tiêu đề và ảnh của mỗi bài viết
-                while ($wp_query->have_posts()) : $wp_query->the_post();
-                    echo '<div class="col-4 element-item programs ' .$category_slug. '" data-category="' .$category_slug. '">';
-                    echo '<div class="item-container">';
-                    if (has_post_thumbnail()) {
-                        // Nếu bài viết có ảnh đại diện, hiển thị nó
-                        the_post_thumbnail('thumbnail', ['class' => 'item-img', 'alt' => get_the_title()]);
+                // Lấy danh sách bài viết trong mỗi danh mục
+                $args = array(
+                    'cat' => $category_id, // ID của danh mục
+                    'posts_per_page' => -1, // Lấy tất cả bài viết trong danh mục
+                );
+        
+                $posts = get_posts($args); // Lấy danh sách bài viết
+        
+                // Kiểm tra xem có bài viết nào trong danh mục không
+                if ($posts) {
+                    foreach ($posts as $post) {
+                        // Kiểm tra xem bài viết đã được thêm vào mảng chưa
+                        if (!isset($array_post[$post->ID])) {
+                            // Nếu chưa, thêm bài viết vào mảng với ID của bài viết làm khóa
+                            $array_post[$post->ID] = $post;
+                        }
                     }
-                    echo '</div>';
-                    echo '<div class="item-footer text-center">';
-                    echo '<a class="my-symbol text-decoration-none" href="' . get_permalink() . '" class="card-title">' . get_the_title() . '</a>';
-                    echo '<div class="my-category">Thuộc ' .$category_name. '</div>';
-                    echo '</div>';
-                    echo '</div>';
-                endwhile;
-                // Đặt lại truy vấn và dữ liệu bài viết
-                wp_reset_query();
-                wp_reset_postdata();      
+                }
             }
         }
+
         echo '</div>';
-        echo '</div>';
-        echo $after_widget;
+        echo '<div class="grid row">';
+
+        foreach ($array_post as $post) {
+            // Lấy danh sách category của bài viết
+            $categories = get_the_category($post);
         
+            // Khởi tạo một chuỗi để lưu trữ các slug của các danh mục
+            $category_slugs = '';
+        
+            // Kiểm tra xem danh sách category có tồn tại không
+            if ($categories) {
+                foreach ($categories as $category) {
+                    // Lấy slug của category
+                    $category_slug = $category->slug;
+        
+                    // Thêm slug của category vào chuỗi và thêm khoảng trắng nếu chuỗi không rỗng
+                    $category_slugs .= $category_slug . ' ';
+                }
+            }
+        
+            // In ra phần HTML cho mỗi bài viết với danh sách slug của các danh mục trong data-category
+            echo '<div class="mb-4 col-4 element-item ' . trim($category_slugs) . '" data-category="' . trim($category_slugs) . '">';
+            echo '<div class="item-container mmmm">';
+            if (has_post_thumbnail($post)) {
+                // Nếu bài viết có ảnh đại diện, hiển thị nó
+                echo get_the_post_thumbnail($post, 'thumbnail', ['class' => 'item-img', 'alt' => get_the_title($post)]);
+            }
+            echo '</div>';
+            echo '<div class="item-footer text-center">';
+            echo '<a class="my-symbol text-decoration-none " href="' . get_permalink($post) . '" class="card-title title-ellipsis-three">' . get_the_title($post) . '</a>';
+            echo '</div>';
+            echo '</div>';
+        }
+        
+        // Đặt lại truy vấn và dữ liệu bài viết
+        wp_reset_query();
+        wp_reset_postdata();
+        
+        
+        // echo '</div>';
+        // echo '<div class="grid row">';
+        // foreach ($selected_categories as $category_id) {
+        //     $category = get_category($category_id);
+        //     if ($category) {
+        //         $category_slug = $category->slug;
+        //         $category_name = $category->name;
+        //         // Tạo một truy vấn WordPress để lấy bài viết từ chuyên mục hiện tại
+        //         $wp_query = new WP_Query(array(
+        //             'cat' => $category_id,
+        //             'posts_per_page' => $count,
+        //         ));
+        //         // Lặp qua các bài viết trong truy vấn và hiển thị tiêu đề và ảnh của mỗi bài viết
+        //         while ($wp_query->have_posts()) : $wp_query->the_post();
+        //             echo '<div class="col-4 element-item programs ' .$category_slug. '" data-category="' .$category_slug. '">';
+        //             echo '<div class="item-container">';
+        //             if (has_post_thumbnail()) {
+        //                 // Nếu bài viết có ảnh đại diện, hiển thị nó
+        //                 the_post_thumbnail('thumbnail', ['class' => 'item-img', 'alt' => get_the_title()]);
+        //             }
+        //             echo '</div>';
+        //             echo '<div class="item-footer text-center">';
+        //             echo '<a class="my-symbol text-decoration-none" href="' . get_permalink() . '" class="card-title">' . get_the_title() . '</a>';
+        //             // echo '<div class="my-category">Thuộc ' .$category_name. '</div>';
+        //             echo '</div>';
+        //             echo '</div>';
+        //         endwhile;
+        //         // Đặt lại truy vấn và dữ liệu bài viết
+        //         wp_reset_query();
+        //         wp_reset_postdata();      
+        //     }
+        // }
+        // echo '</div>';
+        // echo '</div>';
+        echo $after_widget;
     }
+
     function update($new_instance, $old_instance)
     {
         // Lưu các tùy chọn mới từ form

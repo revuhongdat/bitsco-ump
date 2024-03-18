@@ -55,12 +55,15 @@ class TabsList extends WP_Widget
                     echo '<div class="card" style="width: 100%;">';
                     if (has_post_thumbnail()) {
                         // Nếu bài viết có ảnh đại diện, hiển thị nó
+                        echo '<div class="hover-effect">';
                         the_post_thumbnail('thumbnail', ['class' => 'card-img-top', 'alt' => get_the_title()]);
+                        echo '</div>';
                     }
+                    
                     echo '<div class="card-body">';
-                    echo '<a href="' . get_permalink() . '" class="card-title">' . get_the_title() . '</a>';
-                    echo '<p class="card-text">' . get_the_excerpt() . '</p>';
-                    echo '<a href="' . get_permalink() . '" class="card-read-more">' . __('Read more >', 'textdomain') . '</a>';
+                    echo '<a href="' . get_permalink() . '" class="card-title title-ellipsis-three">' . get_the_title() . '</a>';
+                    echo '<p class="card-text title-ellipsis-three">' . get_the_excerpt() . '</p>';
+                    echo '<a href="' . get_permalink() . '" class="card-read-more">' . __('Xem thêm >', 'textdomain') . '</a>';
                     echo '</div>'; // /.card-body
                     echo '</div>'; // /.card
                     echo '</div>'; // /.item';

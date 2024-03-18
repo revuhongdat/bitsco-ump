@@ -32,18 +32,21 @@ class HomeWidgetCarousel extends WP_Widget
         ?>
             <div style="height: 100%; display: flex; justify-content: center; align-items: center;" class="owl-carousel1 owl-carousel owl-theme">
                     <?php
-                    while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
+                    while ($wp_query->have_posts()) : $wp_query->the_post(); 
+                    ?>
                         <div style="width: 60%; margin: 0 auto; text-align: center; align-items: center; display: flex; flex-direction: column; color: white;" class="card-title title-ellipsis mb-0">
                             <?php
                                 // Đường dẫn đến ảnh trực tuyến
-                                $online_image_url = "https://drallen.com.vn/wp-content/uploads/2023/09/chup-anh-di-bien.jpg";
+                                $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
                             ?>
-                            <img style="width: 80px; height: 80px; border-radius: 50%; margin-bottom: 20px;" src="<?php echo $online_image_url; ?>" alt="">
-                            <p style="font-size: 24px">“Suspe ndisse suscipit sagittis leo sit met dimentum estibulum issim posuere cubilia Curae Suspendisse at consectetur massa.”</p>
-                            <div>
-                                <div>Julia Jameson</div>
-                                <p>Activist</p>
-                            </div>
+                            <img style="width: 600px; height: 300px; margin-bottom: 20px;" src="<?php echo $image_url; ?>" alt="">
+                            <p style="font-size: 14px">
+                                <?php echo get_the_excerpt(); ?>
+                            </p>
+                            <!-- <div> -->
+                                <!-- <div>UMP</div> -->
+                                <!-- <p>Hoạt động</p> -->
+                            <!-- </div> -->
                         </div>
                     <?php
                     endwhile;

@@ -29,77 +29,38 @@ class TabsList2 extends WP_Widget
             'cat' => $category,
             'posts_per_page' => $count,
         ));
-?>
-<div class="container">
-    <div class="owl-carousel owl-carousel2 owl-theme">
-                <div class="item">
-                    <div class="card" style="width: 100%;">
-                        <img src="https://dream-city.cmsmasters.net/wp-content/uploads/2016/11/Depositphotos_102982556_original-s.jpg"
-                             class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="#" class="card-title">Service Request</a>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="card-read-more">Read more ></a>
-                        </div>
+        ?>
+        <div class="container">
+        <div class="owl-carousel owl-carousel2 owl-theme">
+        <?php
+        while ($wp_query->have_posts()) : $wp_query->the_post();
+        ?>
+            <div class="item">
+                <div class="card" style="width: 100%;">
+                    <?php
+                    // Đường dẫn đến ảnh trực tuyến
+                    $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
+                    ?>
+                    <div class="hover-effect">
+                        <img class="card-img-top" src="<?php echo $image_url; ?>" alt="">
                     </div>
-                </div>
-                <div class="item">
-                    <div class="card" style="width: 100%;">
-                        <img src="https://dream-city.cmsmasters.net/wp-content/uploads/2016/11/Depositphotos_88662986_original-s.jpg"
-                             class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="#" class="card-title">Family Parents</a>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="card-read-more">Read more ></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="card" style="width: 100%;">
-                        <img src="https://dream-city.cmsmasters.net/wp-content/uploads/2016/11/Depositphotos_88886058_original-s.jpg"
-                             class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="#" class="card-title">Care Donation</a>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="card-read-more">Read more ></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="card" style="width: 100%;">
-                        <img src="https://dream-city.cmsmasters.net/wp-content/uploads/2016/11/Depositphotos_21832931_original-s.jpg"
-                             class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="#" class="card-title">Animal Control</a>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="card-read-more">Read more ></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="card" style="width: 100%;">
-                        <img src="https://dream-city.cmsmasters.net/wp-content/uploads/2016/11/Depositphotos_21832931_original-s.jpg"
-                             class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <a href="#" class="card-title">Buildings</a>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="card-read-more">Read more ></a>
-                        </div>
+                    <div class="card-body">
+                        <a href="<?php echo get_permalink(); ?>" class="card-title title-ellipsis-three"><?php echo get_the_title(); ?></a>
+                        <p class="card-text title-ellipsis-three"><?php echo get_the_excerpt(); ?></p>
+                        <a href="<?php echo get_permalink(); ?>" class="card-read-more">Xem thêm ></a>
                     </div>
                 </div>
             </div>
-</div>
-<?php
-                    wp_reset_query();
-                    wp_reset_postdata();
-        echo $after_widget;
+        <?php
+        endwhile;
+        wp_reset_query();
+        wp_reset_postdata();
+        ?>
+        </div>
+    </div>
+    <?php
+    echo $after_widget;
     }
-
 
     function update($new_instance, $old_instance)
     {
