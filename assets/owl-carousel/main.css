@@ -1,7 +1,20 @@
+    .card {
+        margin-bottom: 40px;
+    }
+    
     .card-body {
-        text-align: center;
+        text-align: left;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
+
+    .card-text {
+        max-height: 90px;
+        overflow:inherit;
+    }
+    
+    /* .card-read-more {
+        margin-bottom: 10px;
+    } */
 
     .card-text {
         font-family: Arial, sans-serif;
@@ -9,7 +22,14 @@
         line-height: 22px;
         font-weight: normal;
         font-style: normal;
-        color: #6f6f6f;
+        color: #333;
+    }
+
+    .title-ellipsis-three {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
     .card-title {
@@ -18,7 +38,7 @@
         line-height: 32px;
         font-weight: 500;
         font-style: normal;
-        color: #486acd;
+        color: #333;
         align-self: center;
     }
 
@@ -28,7 +48,7 @@
         line-height: 22px;
         font-weight: 550;
         font-style: normal;
-        color: #ff4d58;
+        color: #333;
         text-decoration: none;
         align-self: center;
     }
@@ -40,7 +60,7 @@
 
     .card-title:hover {
         text-decoration: none;
-        color: #486acd;
+        color: #ff4d58;
     }
 
     .item {
@@ -48,3 +68,55 @@
         display: flex;
         align-items: center;
     }
+    .flip {
+        font-size: 18px;
+        text-transform: uppercase;
+    }
+
+
+    /* CSS hover ảnh */
+
+    .hover-effect {
+        margin: 0;
+        padding: 0;
+        background: #fff;
+        overflow: hidden;
+        position: relative; /* Thêm dòng này */
+        max-height: fit-content;
+    }
+    
+    .hover-effect img, .item-container img {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+    
+    .hover-effect::before, 
+    .item-container::before {
+        position: absolute;
+        top: 0;
+        left: -75%;
+        z-index: 2;
+        display: block;
+        content: '';
+        width: 50%;
+        height: 100%;
+        background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+        background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+        transform: skewX(-25deg);
+    }
+    
+    .hover-effect:hover::before,
+    .item-container:hover::before {
+        animation: shine .75s;
+    }
+    
+    @keyframes shine {
+        100% {
+            left: 125%;
+        }
+    }
+
+
+    
+    

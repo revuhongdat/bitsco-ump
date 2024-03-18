@@ -432,6 +432,7 @@ require get_template_directory() . '/inc/tabslist.php';
  * Load tabslist2.
  */
 require get_template_directory() . '/inc/tabslist2.php';
+require get_template_directory() . '/inc/breadcrumb.php';
 
 function add_tablist() {
     wp_enqueue_style( 'owl-carousel-css', get_template_directory_uri() . '/assets/owl-carousel/owl.carousel.min.css' );
@@ -441,7 +442,15 @@ function add_tablist() {
     wp_enqueue_style( 'bootstrap-min-css', get_template_directory_uri() . '/assets/owl-carousel/bootstrap.min.css' );
 	wp_enqueue_style( 'tabslist-css', get_template_directory_uri() . '/assets/owl-carousel/tabslist.css' );
 	wp_enqueue_style( 'main-css', get_template_directory_uri() . '/assets/owl-carousel/main.css' );
+	wp_enqueue_style( 'breadcrumb-css', get_template_directory_uri() . '/assets/owl-carousel/breadcrumb.css' );
 	wp_enqueue_script( 'tabslist-js', get_template_directory_uri() . '/assets/owl-carousel/tabslist.js', array(), '1.0.0', true );
     wp_enqueue_script( 'card-js', get_template_directory_uri() . '/assets/owl-carousel/card.js', array(), '3.0.0', true );
 	}	
 	add_action( 'wp_enqueue_scripts', 'add_tablist' );
+
+function enqueue_fontawesome() {
+    wp_enqueue_style('fontawesome', get_template_directory_uri() . '/fontawesome/css/all.min.css', array(), null);
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_fontawesome');
+    
