@@ -1,6 +1,13 @@
 <!DOCTYPE html>
+<html lang="vi">
 <html <?php language_attributes(); ?>>
 <head>
+    <link rel="canonical" href="https://ump.bitsco.vn">
+    <meta property="og:locale" content="vi_VN">
+    <meta property="og:url" content="https://ump.bitsco.vn">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Trung tâm đào tạo theo nhu cầu xã hội">
+    <meta property="og:description" content="Trung tâm đào tạo theo nhu cầu xã hội của Đại học y dược - Đại học quốc  gia Hà Nội">
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="http://gmpg.org/xfn/11">
@@ -14,8 +21,6 @@
           href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap">
     <!-- Bootstrap -->
     <link href="<?php bloginfo('template_url'); ?>/css/bootstrap.min.css" rel="stylesheet">
-    <!--    <link href="--><?php //bloginfo('template_url'); ?><!--/css/mdb.min.css" rel="stylesheet">-->
-    <!--    <link href="--><?php //bloginfo('template_url'); ?><!--/css/perfect-scrollbar.css" rel="stylesheet">-->
     <!-- Thêm file CSS của Owl Carousel -->
     <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/assets/owl.theme.default.min.css">

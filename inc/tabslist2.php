@@ -42,7 +42,7 @@ class TabsList2 extends WP_Widget
                     $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
                     ?>
                     <div class="hover-effect">
-                        <img class="card-img-top" src="<?php echo $image_url; ?>" alt="">
+                        <img class="card-img-top" src="<?php echo $image_url; ?>" alt="img-post-title">
                     </div>
                     <div class="card-body">
                         <a href="<?php echo get_permalink(); ?>" class="card-title title-ellipsis-three"><?php echo get_the_title(); ?></a>

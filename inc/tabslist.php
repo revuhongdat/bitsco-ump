@@ -29,7 +29,10 @@ class TabsList extends WP_Widget
         foreach ($selected_categories as $category_id) {
             $category = get_category($category_id);
             if ($category) {
-                echo '<button class="flip mr-3 ml-3" data-panel="panel' . $category_id . '">' . esc_html($category->name) . '</button>';
+                echo '<div class="box-category flip" data-panel="panel' . $category_id . '">';
+                echo '<i class="fa-solid fa-hospital"></i>';
+                echo '<p>' . esc_html($category->name) . '</p>';
+                echo '</div>';
             }
         }
         echo '</div>';
@@ -52,7 +55,7 @@ class TabsList extends WP_Widget
                 // Lặp qua các bài viết trong truy vấn và hiển thị tiêu đề và ảnh của mỗi bài viết
                 while ($wp_query->have_posts()) : $wp_query->the_post();
                     echo '<div class="item">';
-                    echo '<div class="card" style="width: 100%;">';
+                    echo '<div class="card">';
                     if (has_post_thumbnail()) {
                         // Nếu bài viết có ảnh đại diện, hiển thị nó
                         echo '<div class="hover-effect">';

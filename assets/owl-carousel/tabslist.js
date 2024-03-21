@@ -2,9 +2,10 @@ jQuery(document).ready(function(){
     // Biến để theo dõi panel hiện tại đang hiển thị
     var currentPanel = null;
 
-    // SlideDown panel1 khi trang được tải xong
-    jQuery("#panel16").slideDown("slow");
-    currentPanel = "#panel16";
+    // SlideDown panel đầu tiên khi trang được tải xong
+    jQuery(".panel").first().slideDown("slow");
+    currentPanel = jQuery(".panel").first();
+    jQuery(".flip").first().addClass("active");
 
     jQuery(".flip").click(function(){
         var panelId = "#" + jQuery(this).data("panel");
@@ -28,4 +29,15 @@ jQuery(document).ready(function(){
             }
         }
     });
+    // Thêm bớt class active khi bấm vào nút button
+    jQuery('.container-flip').each(function (i, div) {
+        var $div = jQuery(div);
+        $div.on('click', '.box-category.flip', function () {
+            $div.find('.active').removeClass('active');
+            jQuery(this).addClass('active');
+        });
+    });
+    
 });
+
+
