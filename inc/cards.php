@@ -1,66 +1,84 @@
 <?php
 
-class TabsList2 extends WP_Widget
+class Cards extends WP_Widget
 {
 
     function __construct()
     {
-        // Instantiate the parent object
         parent::__construct(
-            'TabsList2',
-            __('Tabs List2', 'iboss'), // Name
-            array('description' => __('Tabs List2.', 'iboss'),) // Args
+            'Cards',
+            __('Cards', 'iboss'), // Name
+            array('Cards' => __('Hiển thị danh sách bài viết dạng lưới .', 'iboss'),) // Args
         );
     }
 
     function widget($args, $instance)
     {
         extract($args);
-
+    
         $title = apply_filters('title', isset($instance['title']) ? esc_attr($instance['title']) : '');
         $category = apply_filters('category', isset($instance['category']) ? esc_attr($instance['category']) : '');
-        $count = apply_filters('count', isset($instance['count']) && is_numeric($instance['count']) ? esc_attr($instance['count']) : '');
-
+        $count = apply_filters('count', isset($instance['count']) && is_numeric($instance['count']) ? esc_attr($instance['count']) : 12);
+    
         $category_link = get_category_link($category);
-
+    
         echo $before_widget;
-
+    
+        $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1; // Lấy trang hiện tại
         $wp_query = new WP_Query(array(
-            'cat' => $category,
+            'cat' => $category, 
             'posts_per_page' => $count,
+            'paged' => $paged, // Truyền trang hiện tại vào truy vấn
         ));
         ?>
-        <div class="container">
-        <div class="owl-carousel owl-carousel2 owl-theme">
-        <?php
-        while ($wp_query->have_posts()) : $wp_query->the_post();
-        ?>
-            <div class="item">
-                <div class="card" style="width: 100%;">
-                    <?php
-                    // Đường dẫn đến ảnh trực tuyến
-                    $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
-                    ?>
-                    <div class="hover-effect">
-                        <img class="card-img-top" src="<?php echo $image_url; ?>" alt="img-post-title">
-                    </div>
-                    <div class="card-body">
-                        <a href="<?php echo get_permalink(); ?>" class="card-title title-ellipsis-three"><?php echo get_the_title(); ?></a>
-                        <p class="card-text title-ellipsis-three"><?php echo get_the_excerpt(); ?></p>
-                        <a href="<?php echo get_permalink(); ?>" class="card-read-more">Xem thêm ></a>
+        <div class="row">
+            <?php if (function_exists('iboss_breadcrumbs')) iboss_breadcrumbs(); ?>
+        </div>
+        <div class="row row-cols-1 row-cols-md-4">
+            <?php
+            while ($wp_query->have_posts()) : $wp_query->the_post(); 
+                ?>
+                <div class="col mb-4">
+                    <div class="card h-100">
+                        <?php
+                        // Đường dẫn đến ảnh
+                        $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
+                        ?>
+                        <img class="card-img-top" src="<?php echo $image_url; ?>" alt="Card image">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <a 
+                                href="<?php echo get_permalink(); ?>"
+                                class="card-title"><?php echo get_the_title(); ?>
+                            </a>
+                            <a 
+                                href="<?php echo get_permalink(); ?>" 
+                                class="card-read-more">Xem thêm >
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        <?php
-        endwhile;
-        wp_reset_query();
-        wp_reset_postdata();
-        ?>
+    
+            <?php
+            endwhile;
+            wp_reset_query();
+            wp_reset_postdata();
+            ?>
         </div>
-    </div>
-    <?php
-    echo $after_widget;
+        <?php
+        // Hiển thị phân trang
+        echo '<ul class="pagination d-flex justify-content-center">';
+        $big = 999999999;
+        echo paginate_links( array(
+            'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+            'format' => '?paged=%#%',
+            'current' => max(1, get_query_var('paged')),
+            'total' => $wp_query->max_num_pages
+        ) );
+        echo '</ul>';
+        echo $after_widget;
     }
+    
+
 
     function update($new_instance, $old_instance)
     {
@@ -111,16 +129,16 @@ class TabsList2 extends WP_Widget
                 <?php _e('Số bài viết (tối đa 4):', 'iboss'); ?>
                 <input id="<?php echo $this->get_field_id('count'); ?>"
                        name="<?php echo $this->get_field_name('count'); ?>" type="number"
-                       min="1" max="4" value="<?php echo $count; ?>"/>
+                       value="<?php echo $count; ?>"/>
             </label>
         </p>
         <?php
     }
 }
 
-function tabslist2_register_widgets()
+function cards_register_widgets()
 {
-    register_widget('TabsList2');
+    register_widget('Cards');
 }
 
-add_action('widgets_init', 'tabslist2_register_widgets');
+add_action('widgets_init', 'cards_register_widgets');

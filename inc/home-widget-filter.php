@@ -95,7 +95,7 @@ class HomeWidgetFilter extends WP_Widget
             }
             echo '</div>';
             echo '<div class="item-footer text-center">';
-            echo '<a class="my-symbol text-decoration-none " href="' . get_permalink($post) . '" class="card-title title-ellipsis-three">' . get_the_title($post) . '</a>';
+            echo '<a class="my-symbol text-decoration-none card-title title-ellipsis-three" href="' . get_permalink($post) . '">' . get_the_title($post) . '</a>';
             echo '</div>';
             echo '</div>';
         }
@@ -103,42 +103,6 @@ class HomeWidgetFilter extends WP_Widget
         // Đặt lại truy vấn và dữ liệu bài viết
         wp_reset_query();
         wp_reset_postdata();
-        
-        
-        // echo '</div>';
-        // echo '<div class="grid row">';
-        // foreach ($selected_categories as $category_id) {
-        //     $category = get_category($category_id);
-        //     if ($category) {
-        //         $category_slug = $category->slug;
-        //         $category_name = $category->name;
-        //         // Tạo một truy vấn WordPress để lấy bài viết từ chuyên mục hiện tại
-        //         $wp_query = new WP_Query(array(
-        //             'cat' => $category_id,
-        //             'posts_per_page' => $count,
-        //         ));
-        //         // Lặp qua các bài viết trong truy vấn và hiển thị tiêu đề và ảnh của mỗi bài viết
-        //         while ($wp_query->have_posts()) : $wp_query->the_post();
-        //             echo '<div class="col-4 element-item programs ' .$category_slug. '" data-category="' .$category_slug. '">';
-        //             echo '<div class="item-container">';
-        //             if (has_post_thumbnail()) {
-        //                 // Nếu bài viết có ảnh đại diện, hiển thị nó
-        //                 the_post_thumbnail('thumbnail', ['class' => 'item-img', 'alt' => get_the_title()]);
-        //             }
-        //             echo '</div>';
-        //             echo '<div class="item-footer text-center">';
-        //             echo '<a class="my-symbol text-decoration-none" href="' . get_permalink() . '" class="card-title">' . get_the_title() . '</a>';
-        //             // echo '<div class="my-category">Thuộc ' .$category_name. '</div>';
-        //             echo '</div>';
-        //             echo '</div>';
-        //         endwhile;
-        //         // Đặt lại truy vấn và dữ liệu bài viết
-        //         wp_reset_query();
-        //         wp_reset_postdata();      
-        //     }
-        // }
-        // echo '</div>';
-        // echo '</div>';
         echo $after_widget;
     }
 

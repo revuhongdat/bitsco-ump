@@ -1,28 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+.card-img-top {
+  max-width: 100%;
+  max-height: 234px;
+}
+
 .panel,
 .flip {
   padding: 5px;
   text-align: center;
 }
 
-.flip:hover {
-  border-bottom: #080808 solid 1px;
-  opacity: 1;
-}
-
-/* .flip {
-  width: 25%;
-  color: #282828;
-  opacity: 0.5;
-  font-family: Arial, sans-serif;
-  font-size: 22px;
-  line-height: 32px;
-  font-weight: 500;
-  font-style: normal;
-  align-self: center;
-} */
-
 .panel {
-  padding: 50px 0;
+  padding: 20px 0;
   display: none;
   width: 100%;
 }
@@ -49,31 +40,11 @@
   cursor: pointer;
 }
 
-.flip:hover {
-  background-color: #fafafa;
-  color: #ff4d58;
-}
-
-.flip:active,
-.flip.is-checked {
-  background-color: #fafafa;
-}
-
-.flip.is-checked {
-  border-bottom: 2px solid #ff4d58;
-  background-color: #fafafa;
-  color: #ff4d58;
-}
-
-.flip:active {
-  background-color: #fafafa;
-}
-
 .owl-carousel2 .owl-nav {
   position: absolute;
   top: -64px;
   right: 0;
-  background-color: #ffffff;
+  background-color: #fafafa;
 }
 
 .owl-carousel2 .owl-nav button {
@@ -85,4 +56,72 @@
 
 .owl-carousel2 .owl-nav button:hover {
   background-color: red;
+}
+
+.box-category {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 25%;
+}
+
+.box-category:hover {
+  opacity: 1;
+}
+
+.box-category .icon {
+  font-size: 48px;
+}
+
+.box-category p {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.flip {
+  opacity: 0.8;
+  color: #ff4d58;
+}
+
+.container-flip .active {
+  opacity: 1;
+  border-bottom: #ff4d58 solid 2px;
+}
+
+/* CSS để thiết lập hiệu ứng border màu đỏ khi hover*/
+.flip {
+  position: relative;
+  overflow: hidden;
+}
+
+.flip::before,
+.flip::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  border-bottom: #ff4d58 solid 2px;
+  transition: width 0.2s ease-in-out;
+}
+
+.flip::before {
+  left: 0;
+}
+
+.flip::after {
+  right: 0;
+}
+
+.flip:hover::before,
+.flip:hover::after {
+  width: 50%;
+}
+.active.flip:hover::before,
+.active.flip:hover::after{
+  display: none;
+}
+.active:hover {
+  cursor: default;
 }

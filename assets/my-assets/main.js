@@ -80,13 +80,3 @@ jQuery('.button-group').each(function (i, buttonGroup) {
         jQuery(this).addClass('is-checked');
     });
 });
-
-// change is-checked class on buttons
-jQuery('.container-flip').each(function (i, buttonGroup) {
-    var $buttonGroup = jQuery(buttonGroup);
-    $buttonGroup.on('click', 'button', function () {
-        $buttonGroup.find('.is-checked').removeClass('is-checked');
-        jQuery(this).addClass('is-checked');
-    });
-});
-

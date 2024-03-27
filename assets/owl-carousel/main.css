@@ -1,5 +1,6 @@
     .card {
         margin-bottom: 40px;
+        width: 100%;
     }
     
     .card-body {
@@ -11,10 +12,6 @@
         max-height: 90px;
         overflow:inherit;
     }
-    
-    /* .card-read-more {
-        margin-bottom: 10px;
-    } */
 
     .card-text {
         font-family: Arial, sans-serif;
@@ -82,7 +79,8 @@
         background: #fff;
         overflow: hidden;
         position: relative; /* Thêm dòng này */
-        max-height: fit-content;
+        max-height: 50%;
+        object-fit: cover;
     }
     
     .hover-effect img, .item-container img {
