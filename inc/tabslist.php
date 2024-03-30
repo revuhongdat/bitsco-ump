@@ -54,12 +54,12 @@ class TabsList extends WP_Widget
         
                 // Lặp qua các bài viết trong truy vấn và hiển thị tiêu đề và ảnh của mỗi bài viết
                 while ($wp_query->have_posts()) : $wp_query->the_post();
-                    echo '<div class="item">';
+                    echo '<div class="item mx-2">';
                     echo '<div class="card">';
                     if (has_post_thumbnail()) {
                         // Nếu bài viết có ảnh đại diện, hiển thị nó
                         echo '<div class="hover-effect">';
-                        the_post_thumbnail('thumbnail', ['class' => 'card-img-top', 'alt' => get_the_title()]);
+                        the_post_thumbnail('full', ['class' => 'card-img-top', 'alt' => get_the_title(), 'loading' => 'lazy']);
                         echo '</div>';
                     }
                     

@@ -2,10 +2,11 @@
   box-sizing: border-box;
 }
 .card-img-top {
-  max-width: 100%;
+  width: auto;
   max-height: 234px;
+  height: 234px;
+  object-fit: cover;
 }
-
 .panel,
 .flip {
   padding: 5px;

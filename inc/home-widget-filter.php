@@ -91,7 +91,7 @@ class HomeWidgetFilter extends WP_Widget
             echo '<div class="item-container mmmm">';
             if (has_post_thumbnail($post)) {
                 // Nếu bài viết có ảnh đại diện, hiển thị nó
-                echo get_the_post_thumbnail($post, 'thumbnail', ['class' => 'item-img', 'alt' => get_the_title($post)]);
+                echo get_the_post_thumbnail($post, 'full', ['class' => 'item-img', 'alt' => get_the_title($post), 'loading' => 'lazy']);
             }
             echo '</div>';
             echo '<div class="item-footer text-center">';

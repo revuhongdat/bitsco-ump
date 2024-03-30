@@ -42,7 +42,7 @@ class Cards extends WP_Widget
                     <div class="card h-100">
                         <?php
                         // Đường dẫn đến ảnh
-                        $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
+                        $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
                         ?>
                         <img class="card-img-top" src="<?php echo $image_url; ?>" alt="Card image">
                         <div class="card-body d-flex flex-column justify-content-between">

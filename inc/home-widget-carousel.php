@@ -37,9 +37,9 @@ class HomeWidgetCarousel extends WP_Widget
                         <div style="width: 60%; margin: 0 auto; text-align: center; align-items: center; display: flex; flex-direction: column; color: white;" class="card-title title-ellipsis mb-0">
                             <?php
                                 // Đường dẫn đến ảnh trực tuyến
-                                $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
+                                $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
                             ?>
-                            <img style="width: 600px; height: 300px; margin-bottom: 20px;" src="<?php echo $image_url; ?>" alt="">
+                            <img loading ="lazy" style="width: 600px; height: 300px; margin-bottom: 20px; object-fit: cover" src="<?php echo $image_url; ?>" alt="">
                             <p style="font-size: 14px">
                                 <?php echo get_the_excerpt(); ?>
                             </p>

@@ -30,19 +30,19 @@ class TabsList2 extends WP_Widget
             'posts_per_page' => $count,
         ));
         ?>
-        <div class="container">
+        <div class="container-fluid">
         <div class="owl-carousel owl-carousel2 owl-theme">
         <?php
         while ($wp_query->have_posts()) : $wp_query->the_post();
         ?>
-            <div class="item">
+            <div class="item mx-2">
                 <div class="card" style="width: 100%;">
                     <?php
                     // Đường dẫn đến ảnh trực tuyến
-                    $image_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
+                    $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
                     ?>
                     <div class="hover-effect">
-                        <img class="card-img-top" src="<?php echo $image_url; ?>" alt="img-post-title">
+                        <img class="card-img-top" loading ="lazy" src="<?php echo $image_url; ?>" alt="img-post-title">
                     </div>
                     <div class="card-body">
                         <a href="<?php echo get_permalink(); ?>" class="card-title title-ellipsis-three"><?php echo get_the_title(); ?></a>
